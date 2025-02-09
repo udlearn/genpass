@@ -1,3 +1,4 @@
+/* eslint-disable */
 const genpass = require('../main.js').generatePassword;
 
 describe('genpass', () => {
