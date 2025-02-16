@@ -1,5 +1,4 @@
-/* eslint-disable */
-const genpass = require('../main.js').generatePassword;
+import genpass from '../src';
 
 describe('genpass', () => {
   it('should generate password this long', () => {
