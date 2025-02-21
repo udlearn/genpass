@@ -43,6 +43,6 @@ $ genpass -h
 Developed by Ralph Florent.
 Inspired by [brendanashworth](https://github.com/brendanashworth/generate-password).
 
-## Licence
+## License
 
 [LICENSE](LICENSE).
