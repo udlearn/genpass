@@ -35,7 +35,7 @@ $ genpass -L 12
 2. generate passwords with no digits and no uppercase characters:
 $ genpass -d 0 -u 0
 
-Visit https://www.npmjs.com/package/my-cool-genpass for more info.`;
+Visit https://www.npmjs.com/package/@udlearn/genpass for more info.`;
 
 if (command.help) {
   console.log(usage);
