@@ -1,8 +1,7 @@
-const random = (min, max) => {
+const random = (min: number, max: number): number => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-/* eslint-disable-next-line */
-module.exports = { random };
+export { random };
