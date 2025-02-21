@@ -5,7 +5,6 @@ module.exports = tseslint.config(
     pluginJs.configs.recommended,
     tseslint.configs.recommended,
     {
-        files: ['src/**/*.ts'],
         languageOptions: {
             parserOptions: {
                 project: 'tsconfig.dev.json',

@@ -4,6 +4,9 @@
   "description": "Password generation made easy",
   "main": "lib/index.js",
   "types": "lib/types.d.ts",
+  "bin": {
+    "genpass": "lib/cli.js"
+  },
   "files": [
     "lib"
   ],
@@ -16,8 +19,13 @@
     "examples": "tsc -p tsconfig.dev.json && node build/examples/index.js",
     "lint": "eslint '{src,test}/**/*.ts' --fix",
     "test": "jest",
+    "prebuild": "rm -rf lib",
     "build": "rollup -c",
+    "postbuild": "chmod +x lib/cli.js",
     "prepare": "husky"
+  },
+  "dependencies": {
+    "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

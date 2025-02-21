@@ -18,5 +18,15 @@ module.exports = [
       format: 'esm'
     },
     plugins: [require('rollup-plugin-dts').dts()]
-  }
+  },
+  {
+    input: 'src/cli.ts',
+    output: {
+      dir: 'lib',
+      format: 'cjs',
+      exports: 'named'
+    },
+    external: ['yargs-parser'],
+    plugins: [commonjs(), typescript()]
+  },
 ];

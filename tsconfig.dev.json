@@ -6,5 +6,5 @@
     "moduleResolution": "nodenext",
     "types": ["node", "jest"]
   },
-  "include": ["test", "examples"]
+  "include": ["src", "test", "examples"]
 }
