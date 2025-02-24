@@ -24,8 +24,8 @@ console.log(genpass({ length: 12, symbols: false }));
 ```bash
 $ npm i -g @udlearn/genpass
 > ...
-$ genpass -h
-> some password
+$ genpass
+> some-password
 ```
 
 ## Options
@@ -45,4 +45,4 @@ Inspired by [brendanashworth](https://github.com/brendanashworth/generate-passwo
 
 ## License
 
-[LICENSE](LICENSE).
+[MIT](LICENSE).

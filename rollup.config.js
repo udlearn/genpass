@@ -4,29 +4,45 @@ const typescript = require('@rollup/plugin-typescript');
 module.exports = [
   {
     input: 'src/index.ts',
+    output: [
+      {
+        dir: 'lib',
+        format: 'cjs',
+        exports: 'named',
+      },
+      {
+        file: 'lib/bundle.js',
+        format: 'umd',
+        name: 'genpass',
+        exports: 'named',
+      },
+    ],
+    plugins: [commonjs(), typescript()],
+  },
+  {
+    input: 'src/index.ts',
     output: {
-      dir: 'lib',
-      format: 'cjs',
-      exports: 'named'
+      file: 'lib/index.mjs',
+      format: 'esm',
     },
-    plugins: [commonjs(), typescript()]
+    plugins: [commonjs(), typescript({ tsconfig: './tsconfig.esm.json' })],
   },
   {
     input: 'src/index.ts',
     output: {
       file: 'lib/types.d.ts',
-      format: 'esm'
+      format: 'esm',
     },
-    plugins: [require('rollup-plugin-dts').dts()]
+    plugins: [require('rollup-plugin-dts').dts()],
   },
   {
     input: 'src/cli.ts',
     output: {
       dir: 'lib',
       format: 'cjs',
-      exports: 'named'
+      exports: 'named',
     },
     external: ['yargs-parser'],
-    plugins: [commonjs(), typescript()]
+    plugins: [commonjs(), typescript()],
   },
 ];
