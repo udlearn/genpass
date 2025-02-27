@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: ['*', '!main']
+    paths-ignore: ['**.md']
+
+  pull_request:
+    branches: [main]
+    paths-ignore: ['**.md']
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: ['18.18.0', '22.14.0']
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Run tests
+        run: |
+          npm run format
+          npm run lint
+          npm run test
+
+  build:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.18.2'
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Build package
+        run: npm run build

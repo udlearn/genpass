@@ -1,17 +1,36 @@
 import { random } from './helpers';
 
-class PasswordError extends Error {}
+class PasswordError extends Error {
+  name = 'PasswordError';
+}
 
 interface PasswordOptions {
+  /** Password length. */
   length: number;
+
+  /** Number of uppercase characters to include. */
   uppercase: boolean | number;
+
+  /** Number of lowercase characters to include. */
   lowercase: boolean | number;
+
+  /** Number of digits to include. */
   digit: boolean | number;
+
+  /** Special characters to include. */
   symbols: boolean | string;
+
+  /** Similar characters (e.g., `il1`) to include. */
   similar: boolean | string;
+
+  /** Rare characters (e.g., `()[]`) to include. */
   ambiguous: boolean | string;
 }
 
+/**
+ * Curated options to build passwords off of.
+ * @see {@link PasswordOptions}.
+ */
 class Config {
   length!: number;
   lowercase!: number;
@@ -51,8 +70,17 @@ function pickFrom(pool: string, upTo: number = pool.length): string {
   return picked;
 }
 
+/**
+ * Generates passwords.
+ *
+ * @param {PasswordOptions} options - criteria to consider when generating a password.
+ * @returns {string} a password matching the specified criteria.
+ * @throws {PasswordError} when unable to generate passwords that match the criteria/options.
+ *
+ * @see {@link DEFAULT_CONFIG} for more details about the default values.
+ */
 function generatePassword(options?: Partial<PasswordOptions>): string {
-  const config = new Config(options);
+  const config = options ? new Config(options) : DEFAULT_CONFIG;
   const { length, lowercase, uppercase, digit, symbols, ambiguous, similar } = config;
 
   let pool: string = '';
@@ -72,6 +100,9 @@ function generatePassword(options?: Partial<PasswordOptions>): string {
   return password;
 }
 
+/**
+ * Default configuration.
+ */
 const DEFAULT_CONFIG = new Config();
 
 export { generatePassword, PasswordOptions, PasswordError, DEFAULT_CONFIG };

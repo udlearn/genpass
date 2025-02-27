@@ -38,10 +38,10 @@ $ genpass
 - `similar` (default: `false`) disables or applies these lookalike characters only.
 - `ambiguous` (default: `false`) disables or applies these ambiguous characters only.
 
-## Authorship
+## Contributing
 
-Developed by Ralph Florent.
-Inspired by [brendanashworth](https://github.com/brendanashworth/generate-password).
+Please follow the [Contributing](CONTRIBUTING.md) guidelines if you wish to collaborate
+or share some feedback on how to make this better.
 
 ## License
 

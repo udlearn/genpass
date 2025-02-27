@@ -1,6 +1,6 @@
 {
   "name": "@udlearn/genpass",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Password generation made easy",
   "author": "Ralph Florent",
   "homepage": "https://github.com/udlearn/genpass",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
@@ -68,7 +69,8 @@
     "testRegex": ".*\\.spec\\.ts$",
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "!src/cli.ts"
     ],
     "transform": {
       "^.+.ts$": [
